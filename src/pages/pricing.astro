@@ -7,78 +7,70 @@ import Sectionhead from "@components/sectionhead.astro";
 import Layout from "@layouts/Layout.astro";
 import { changeLanguage } from "i18next";
 
-changeLanguage("en");
+changeLanguage("es");
 
 const pricingData = [
 	{
-		name: "Personal",
-		price: "Free",
+		name: "Básico",
+		price: "Desde S/100",
 		popular: false,
 		features: [
-			"Lifetime free",
-			"Up to 3 users",
-			"Unlimited Pages",
-			"Astro Sub domain",
-			"Basic Integrations",
-			"Community Support",
+			"Transporte de carga consolidada nacional",
+			"Envíos a países andinos",
+			"Carga general y paquetería",
+			"Entrega en plazos estándar",
+			"Seguimiento básico",
 		],
 		button: {
-			text: "Get Started",
-			link: "/",
+			text: "Cotizar ahora",
+			link: "/contact",
 		},
 	},
 	{
-		name: "Startup",
-		price: {
-			monthly: "$19",
-			annual: "$16",
-			discount: "10%",
-			original: "$24",
-		},
+		name: "Estándar",
+		price: "Desde S/250",
 		popular: true,
 		features: [
-			"All Free Features",
-			"Up to 20 users",
-			"20 Custom domains",
-			"Unlimited Collaborators",
-			"Advanced Integrations",
-			"Priority Support",
+			"Transporte de carga sobredimensionada y especial",
+			"Logística para equipos industriales",
+			"Seguros y permisos incluidos",
+			"Prioridad en tiempos de entrega",
+			"Seguimiento en tiempo real",
 		],
 		button: {
-			text: "Get Started",
-			link: "#",
+			text: "Cotizar ahora",
+			link: "/contact",
 		},
 	},
 	{
-		name: "Enterprise",
-		price: "Custom",
+		name: "Premium",
+		price: "A medida",
 		popular: false,
 		features: [
-			"All Pro Features",
-			"Unlimited Custom domains",
-			"99.99% Uptime SLA",
-			"SAML & SSO Integration",
-			"24/7 Phone Support",
+			"Transporte de personal en autos, camionetas y buses",
+			"Servicios VIP para empresas y eventos",
+			"Atención personalizada 24/7",
+			"Flexibilidad en rutas y horarios",
+			"Seguridad y confort garantizados",
 		],
 		button: {
-			text: "Contact us",
+			text: "Contáctanos",
 			link: "/contact",
 		},
 	},
 ];
 ---
 
-<Layout title="Pricing">
+<Layout title="Tarifas">
 	<Container>
 		<Sectionhead>
-			<Fragment slot="title">Pricing</Fragment>
-			<Fragment slot="desc">Affordable Excellence: See Our Pricing.</Fragment>
+			<Fragment slot="title">Nuestros Precios</Fragment>
+			<Fragment slot="desc">Soluciones de transporte adaptadas a tus necesidades.</Fragment>
 		</Sectionhead>
 
 		<div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-20">
 			{pricingData.map((item) => <Pricing plan={item} />)}
 		</div>
-		<!-- <Logos /> -->
 		<Faq />
 	</Container>
 </Layout>

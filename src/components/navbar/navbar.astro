@@ -1,29 +1,27 @@
 ---
+// Importaciones necesarias
 import Button from "@components/ui/button.astro";
 import Link from "@components/ui/link.astro";
 import { localizePath } from "astro-i18next";
 import { Icon } from "astro-icon/components";
 import { t } from "i18next";
 
+// Definición de los elementos del menú
 export const menuitems = [
 	{
-		title: "Sub items",
-		children: [
-			{ title: "Subitem 1", path: "#" },
-			{ title: "Subitem 2", path: "#" },
-			{ title: "Subitem 3", path: "#" },
-		],
+		title: "Inicio",
+		path: "/",
 	},
 	{
-		title: "header.pricing",
+		title: "Precio",
 		path: "/pricing",
 	},
 	{
-		title: "header.blog",
+		title: "Blog",
 		path: "/blog",
 	},
 	{
-		title: "header.contact",
+		title: "Contacto",
 		path: "/contact",
 	},
 ];
@@ -36,8 +34,8 @@ export const menuitems = [
 		<a
 			href={localizePath("/")}
 			class="flex gap-3 items-center text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark:text-white focus:outline-none focus:shadow-outline">
-			<Icon name="logo" width="30" class="dark:invert" alt="Logo" />
-			Astros
+			<img src="/logo.svg" alt="Logo" class="w-20 h-auto" />
+			CENTER TRADING CORPORATION
 		</a>
 		<button class="md:hidden text-gray-500 w-10 h-10 relative focus:outline-none" @click="open = !open">
 			<span class="sr-only">Open main menu</span>
@@ -50,16 +48,15 @@ export const menuitems = [
 				<span
 					aria-hidden="true"
 					class="block absolute h-0.5 w-5 bg-current transform transition duration-200 ease-in-out"
-					:class="{'opacity-0': open } ">
-				</span>
+					:class="{'opacity-0': open } "></span>
 				<span
 					aria-hidden="true"
 					class="block absolute h-0.5 w-5 bg-current transform transition duration-200 ease-in-out"
-					:class="{'-rotate-45': open, ' translate-y-1.5': !open}">
-				</span>
+					:class="{'-rotate-45': open, ' translate-y-1.5': !open}"></span>
 			</div>
 		</button>
 	</div>
+
 	<nav
 		:class="{'flex': open, 'hidden': !open}"
 		x-show="open"
@@ -153,7 +150,7 @@ export const menuitems = [
 			<Link href="/login" style="outline" class="md:px-3 md:py-2 leading-6">
 				{t("header.secondary_button_text")}
 			</Link>
-			<Link href="https://github.com/zankhq/astros" class="md:px-3 md:py-2 leading-6">
+			<Link href="https://wa.me/51965822970?text=Hola%2C%20me%20interesa%20Center%20Trading%20Corporation%20y%20deseo%20una%20cotizaci%C3%B3n" target="_blank">
 				{t("header.primary_button_text")}
 			</Link>
 		</div>

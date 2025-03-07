@@ -23,8 +23,8 @@ const resolvedImageWithDomain = new URL(
 const { title, lang = null } = Astro.props;
 
 const makeTitle = title
-	? `${title} | Astros`
-	: "Astros - Starter Template for Astro with Tailwind CSS";
+	? `${title} | Center Trading Corporation`
+	: "Center Trading Corporation - Líderes en Comercio Global";
 ---
 
 <!doctype html>
@@ -32,9 +32,9 @@ const makeTitle = title
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/logo.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<meta name="theme-color" content="#ffffff" />
+		<meta name="theme-color" content="#004aad" />
 		<HeadHrefLangs />
 
 		<ViewTransitions />
@@ -44,17 +44,17 @@ const makeTitle = title
 
 		<SEO
 			title={makeTitle}
-			description="Astros is a starter website template for Astro built with TailwindCSS and alpine js."
+			description="Center Trading Corporation es una empresa especializada en comercio internacional, ofreciendo productos y soluciones de alta calidad."
 			canonical={canonicalURL}
 			openGraph={{
 				basic: {
 					url: canonicalURL,
 					type: "website",
-					title: `Astros - Starter Template for Astro`,
+					title: `Center Trading Corporation - Comercio Internacional`,
 					image: resolvedImageWithDomain,
 				},
 				image: {
-					alt: "Astros Homepage Screenshot",
+					alt: "Center Trading Corporation - Comercio Internacional",
 				},
 			}}
 		/>
@@ -75,13 +75,12 @@ const makeTitle = title
 		{pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} />}
 		<script src="/src/pwa.ts"></script>
 	</head>
-	<body class="dark:bg-stone-950">
+	<body class="dark:bg-gray-900 bg-white">
 		<Navbar />
 		<slot />
 		<Footer />
 		<style is:global>
-			/* Improve Page speed */
-			/* https://css-tricks.com/almanac/properties/c/content-visibility/ */
+			/* Optimización de rendimiento */
 			img {
 				content-visibility: auto;
 			}

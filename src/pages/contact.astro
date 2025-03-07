@@ -5,37 +5,41 @@ import Button from "@components/ui/button.astro";
 import Layout from "@layouts/Layout.astro";
 import { changeLanguage } from "i18next";
 
-changeLanguage("en");
+changeLanguage("es");
 
 const contacts = [
 	{
-		title: "Marketing",
-		email: "test@yourcompany.com",
-		phone: "+1 (555) 555-5555",
+		title: "Operaciones",
+		email: "operaciones@centertradingcorporation.com",
 	},
 	{
-		title: "Human Resources",
-		email: "test@yourcompany.com",
-		phone: "+1 (555) 555-5555",
+		title: "Administración",
+		email: "administracion@centertradingcorporation.com",
 	},
 	{
-		title: "Finance",
-		email: "test@yourcompany.com",
-		phone: "+1 (555) 555-5555",
+		title: "Contabilidad",
+		email: "contabilidad@centertradingcorporation.com",
 	},
 	{
-		title: "Research and Development",
-		email: "test@yourcompany.com",
-		phone: "+1 (555) 555-5555",
+		title: "Ventas",
+		email: "ventas@centertradingcorporation.com",
 	},
+	{
+		title: "Contacto Directo - K. Guerrero",
+		email: "kguerrero@centertradingcorporation.com",
+	},
+	
 ];
+
+const address = "San Isidro, Lima, Perú";
+const presence = "Contamos con presencia nacional en los 24 departamentos del Perú, lo que nos permite desarrollar eficazmente todas las actividades propias de la operación en todo el territorio peruano.";
 ---
 
-<Layout title="Contact">
+<Layout title="Contacto">
 	<Container>
 		<Sectionhead>
-			<Fragment slot="title">Contact</Fragment>
-			<Fragment slot="desc">Get in Touch.</Fragment>
+			<Fragment slot="title">Contacto</Fragment>
+			<Fragment slot="desc">Estamos aquí para ayudarte.</Fragment>
 		</Sectionhead>
 
 		<div class="py-24 sm:py-32">
@@ -43,8 +47,8 @@ const contacts = [
 				<div class="mx-auto max-w-2xl space-y-16 divide-y divide-gray-100 lg:mx-0 lg:max-w-none">
 					<div class="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-3">
 						<div>
-							<h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Departments</h2>
-							<p class="mt-4 leading-7 text-gray-600 dark:text-gray-200">Reach Out to Our Dedicated Teams.</p>
+							<h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Departamentos</h2>
+							<p class="mt-4 leading-7 text-gray-600 dark:text-gray-200">Comunícate con el área adecuada.</p>
 						</div>
 						<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:col-span-2 lg:gap-8">
 							{
@@ -55,20 +59,22 @@ const contacts = [
 											<div>
 												<dt class="sr-only">Email</dt>
 												<dd>
-													<a class="font-semibold text-stone-600 dark:text-white" href="mailto:collaborate@example.com">
-														{item.email}
-													</a>
+													<a class="font-semibold text-stone-600 dark:text-white" href={`mailto:${item.email}`}>{item.email}</a>
 												</dd>
-											</div>
-											<div class="mt-1">
-												<dt class="sr-only">Phone number</dt>
-												<dd>{item.phone}</dd>
 											</div>
 										</dl>
 									</div>
 								))
 							}
 						</div>
+					</div>
+					<div class="pt-10">
+						<h3 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Nuestra Ubicación</h3>
+						<p class="mt-2 leading-7 text-gray-600 dark:text-gray-200">{address}</p>
+					</div>
+					<div class="pt-10">
+						<h3 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Presencia Nacional</h3>
+						<p class="mt-2 leading-7 text-gray-600 dark:text-gray-200">{presence}</p>
 					</div>
 				</div>
 			</div>

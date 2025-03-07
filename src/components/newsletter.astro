@@ -9,9 +9,11 @@ import { t } from "i18next";
 		<h2 class="sm:block lg:inline xl:block text-3xl sm:text-4xl">{t("newsletter.title")}</h2>
 		<p class="sm:block lg:inline xl:block">{t("newsletter.subtitle")}</p>
 	</div>
-	<form class="w-full max-w-md lg:col-span-5 lg:pt-2">
+	<form class="w-full max-w-md lg:col-span-5 lg:pt-2" action="#" method="POST">
 		<div class="flex gap-x-4">
-			<label for="email-address" class="sr-only">Email address</label>
+			<label for="email-address" class="text-sm font-medium text-gray-900 dark:text-gray-200">
+				{t("newsletter.input_placeholder")}
+			</label>
 			<input
 				id="email-address"
 				name="email"
@@ -21,7 +23,7 @@ import { t } from "i18next";
 				class="min-w-0 flex-auto rounded-md border-0 px-3.5 py-2 text-gray-900 dark:text-gray-100 dark:bg-stone-950 shadow-sm ring-1 ring-inset ring-gray-300 dark:placeholder:text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
 				placeholder={t("newsletter.input_placeholder")}
 			/>
-			<Button>{t("newsletter.button_text")}</Button>
+			<Button type="submit">{t("newsletter.button_text")}</Button>
 		</div>
 		<p class="mt-4 text-sm leading-6 text-gray-900 dark:text-gray-200">
 			{t("newsletter.privacy")}
