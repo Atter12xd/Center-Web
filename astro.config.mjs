@@ -72,5 +72,6 @@ export default defineConfig({
 	},
 	experimental: {
 		contentCollectionCache: true,
+		envPrefix: "PUBLIC_", // Asegura que las variables PUBLIC_ sean accesibles en el frontend
 	},
 });
