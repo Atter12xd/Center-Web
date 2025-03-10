@@ -1,76 +1,17 @@
 ---
-import Container from "@components/container.astro";
-import Faq from "@components/faq.astro";
-import Logos from "@components/logos.astro";
-import Pricing from "@components/pricing.astro";
-import Sectionhead from "@components/sectionhead.astro";
 import Layout from "@layouts/Layout.astro";
-import { changeLanguage } from "i18next";
 
-changeLanguage("es");
-
-const pricingData = [
-	{
-		name: "Básico",
-		price: "Desde S/100",
-		popular: false,
-		features: [
-			"Transporte de carga consolidada nacional",
-			"Envíos a países andinos",
-			"Carga general y paquetería",
-			"Entrega en plazos estándar",
-			"Seguimiento básico",
-		],
-		button: {
-			text: "Cotizar ahora",
-			link: "https://wa.me/51965822970?text=Hola,%20quiero%20cotizar%20el%20plan%20Básico%20(Desde%20S/100)."
-		},
-	},
-	{
-		name: "Estándar",
-		price: "Desde S/250",
-		popular: true,
-		features: [
-			"Transporte de carga sobredimensionada y especial",
-			"Logística para equipos industriales",
-			"Seguros y permisos incluidos",
-			"Prioridad en tiempos de entrega",
-			"Seguimiento en tiempo real",
-		],
-		button: {
-			text: "Cotizar ahora",
-			link: "https://wa.me/51965822970?text=Hola,%20quiero%20cotizar%20el%20plan%20Estándar%20(Desde%20S/250)."
-		},
-	},
-	{
-		name: "Premium",
-		price: "A medida",
-		popular: false,
-		features: [
-			"Transporte de personal en autos, camionetas y buses",
-			"Servicios VIP para empresas y eventos",
-			"Atención personalizada 24/7",
-			"Flexibilidad en rutas y horarios",
-			"Seguridad y confort garantizados",
-		],
-		button: {
-			text: "Contáctanos",
-			link: "https://wa.me/51965822970?text=Hola,%20quiero%20cotizar%20el%20plan%20Premium%20(A%20medida).",
-		},	
-	},
-];
+const mensajeMantenimiento = "Nuestro sitio web está temporalmente fuera de servicio por falta de pago. Disculpe las molestias y gracias por su paciencia.";
+const numeroContacto = "+51 988 774 507";
 ---
 
-<Layout title="Tarifas">
-	<Container>
-		<Sectionhead>
-			<Fragment slot="title">Nuestros Precios</Fragment>
-			<Fragment slot="desc">Soluciones de transporte adaptadas a tus necesidades.</Fragment>
-		</Sectionhead>
-
-		<div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-20">
-			{pricingData.map((item) => <Pricing plan={item} />)}
+<Layout title="Mantenimiento">
+	<section class="flex items-center h-screen p-16 bg-gray-100 dark:bg-gray-900">
+		<div class="container flex flex-col items-center justify-center px-5 mx-auto my-8 text-center">
+			<h1 class="text-5xl font-bold text-gray-800 dark:text-white">🚧 Sitio en Mantenimiento 🚧</h1>
+			<p class="mt-4 text-lg text-gray-600 dark:text-gray-400">{{ mensajeMantenimiento }}</p>
+			<p class="mt-2 text-gray-500">Para más información, contáctenos al <a href={`tel:${numeroContacto}`} class="text-blue-500 underline">{{ numeroContacto }}</a></p>
+			<img src="/maintenance.svg" alt="Modo de mantenimiento" class="w-64 mt-6" />
 		</div>
-		<Faq />
-	</Container>
+	</section>
 </Layout>

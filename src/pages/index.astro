@@ -1,20 +1,17 @@
 ---
-import Container from "@components/container.astro";
-import Faq from "@components/faq.astro";
-import Features from "@components/features.astro";
-import Hero from "@components/hero.astro";
-import Newsletter from "@components/newsletter.astro";
 import Layout from "@layouts/Layout.astro";
-import { changeLanguage } from "i18next";
 
-changeLanguage("en");
+const mensajeMantenimiento = "Nuestro sitio web está temporalmente fuera de servicio por falta de pago. Disculpe las molestias y gracias por su paciencia.";
+const numeroContacto = "+51 988 774 507";
 ---
 
-<Layout>
-	<Container>
-		<Hero />
-		<Features />
-		<Faq />
-		<Newsletter />
-	</Container>
+<Layout title="Mantenimiento">
+	<section class="flex items-center h-screen p-16 bg-gray-100 dark:bg-gray-900">
+		<div class="container flex flex-col items-center justify-center px-5 mx-auto my-8 text-center">
+			<h1 class="text-5xl font-bold text-gray-800 dark:text-white">🚧 Sitio en Mantenimiento 🚧</h1>
+			<p class="mt-4 text-lg text-gray-600 dark:text-gray-400">{{ mensajeMantenimiento }}</p>
+			<p class="mt-2 text-gray-500">Para más información, contáctenos al <a href={`tel:${numeroContacto}`} class="text-blue-500 underline">{{ numeroContacto }}</a></p>
+			<img src="/maintenance.svg" alt="Modo de mantenimiento" class="w-64 mt-6" />
+		</div>
+	</section>
 </Layout>

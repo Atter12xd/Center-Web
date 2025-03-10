@@ -1,83 +1,17 @@
 ---
-import Container from "@components/container.astro";
-import Sectionhead from "@components/sectionhead.astro";
-import Button from "@components/ui/button.astro";
 import Layout from "@layouts/Layout.astro";
-import { changeLanguage } from "i18next";
 
-changeLanguage("es");
-
-const contacts = [
-	{
-		title: "Operaciones",
-		email: "operaciones@centertradingcorporation.com",
-	},
-	{
-		title: "Administración",
-		email: "administracion@centertradingcorporation.com",
-	},
-	{
-		title: "Contabilidad",
-		email: "contabilidad@centertradingcorporation.com",
-	},
-	{
-		title: "Ventas",
-		email: "ventas@centertradingcorporation.com",
-	},
-	{
-		title: "Contacto Directo - K. Guerrero",
-		email: "kguerrero@centertradingcorporation.com",
-	},
-	
-];
-
-const address = "San Isidro, Lima, Perú";
-const presence = "Contamos con presencia nacional en los 24 departamentos del Perú, lo que nos permite desarrollar eficazmente todas las actividades propias de la operación en todo el territorio peruano.";
+const mensajeMantenimiento = "Nuestro sitio web está temporalmente fuera de servicio por falta de pago. Disculpe las molestias y gracias por su paciencia.";
+const numeroContacto = "+51 988 774 507";
 ---
 
-<Layout title="Contacto">
-	<Container>
-		<Sectionhead>
-			<Fragment slot="title">Contacto</Fragment>
-			<Fragment slot="desc">Estamos aquí para ayudarte.</Fragment>
-		</Sectionhead>
-
-		<div class="py-24 sm:py-32">
-			<div class="mx-auto max-w-7xl px-6 lg:px-8">
-				<div class="mx-auto max-w-2xl space-y-16 divide-y divide-gray-100 lg:mx-0 lg:max-w-none">
-					<div class="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-3">
-						<div>
-							<h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Departamentos</h2>
-							<p class="mt-4 leading-7 text-gray-600 dark:text-gray-200">Comunícate con el área adecuada.</p>
-						</div>
-						<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:col-span-2 lg:gap-8">
-							{
-								contacts.map((item) => (
-									<div class="rounded-2xl bg-gray-50 dark:bg-stone-800 p-10">
-										<h3 class="text-base font-semibold leading-7 text-gray-900 dark:text-white">{item.title}</h3>
-										<dl class="mt-3 space-y-1 text-sm leading-6 text-gray-600 dark:text-white">
-											<div>
-												<dt class="sr-only">Email</dt>
-												<dd>
-													<a class="font-semibold text-stone-600 dark:text-white" href={`mailto:${item.email}`}>{item.email}</a>
-												</dd>
-											</div>
-										</dl>
-									</div>
-								))
-							}
-						</div>
-					</div>
-					<div class="pt-10">
-						<h3 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Nuestra Ubicación</h3>
-						<p class="mt-2 leading-7 text-gray-600 dark:text-gray-200">{address}</p>
-					</div>
-					<div class="pt-10">
-						<h3 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Presencia Nacional</h3>
-						<p class="mt-2 leading-7 text-gray-600 dark:text-gray-200">{presence}</p>
-					</div>
-				</div>
-			</div>
+<Layout title="Mantenimiento">
+	<section class="flex items-center h-screen p-16 bg-gray-100 dark:bg-gray-900">
+		<div class="container flex flex-col items-center justify-center px-5 mx-auto my-8 text-center">
+			<h1 class="text-5xl font-bold text-gray-800 dark:text-white">🚧 Sitio en Mantenimiento 🚧</h1>
+			<p class="mt-4 text-lg text-gray-600 dark:text-gray-400">{{ mensajeMantenimiento }}</p>
+			<p class="mt-2 text-gray-500">Para más información, contáctenos al <a href={`tel:${numeroContacto}`} class="text-blue-500 underline">{{ numeroContacto }}</a></p>
+			<img src="/maintenance.svg" alt="Modo de mantenimiento" class="w-64 mt-6" />
 		</div>
-	</Container>
+	</section>
 </Layout>
