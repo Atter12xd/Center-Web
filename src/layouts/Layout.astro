@@ -13,7 +13,7 @@ export interface Props {
 	lang?: string;
 }
 
-const MAINTENANCE_MODE = true; // 🔴 Cambia a "false" cuando quieras restaurar el sitio
+const MAINTENANCE_MODE = import.meta.env.PUBLIC_MAINTENANCE_MODE === "true";
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 const resolvedImageWithDomain = new URL("/meta/opengraph.png", Astro.site).toString();
