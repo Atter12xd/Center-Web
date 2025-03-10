@@ -13,13 +13,10 @@ export interface Props {
 	lang?: string;
 }
 
+const MAINTENANCE_MODE = false; // 🔴 Cambia a "false" cuando quieras restaurar el sitio
+
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
-
-const resolvedImageWithDomain = new URL(
-	"/meta/opengraph.png",
-	Astro.site,
-).toString();
-
+const resolvedImageWithDomain = new URL("/meta/opengraph.png", Astro.site).toString();
 const { title, lang = null } = Astro.props;
 
 const makeTitle = title
@@ -76,9 +73,30 @@ const makeTitle = title
 		<script src="/src/pwa.ts"></script>
 	</head>
 	<body class="dark:bg-gray-900 bg-white">
-		<Navbar />
-		<slot />
-		<Footer />
+		{MAINTENANCE_MODE ? (
+			<!-- 🚧 Modo mantenimiento -->
+			<div class="flex min-h-screen items-center justify-center bg-gray-100 dark:bg-gray-900 text-center">
+				<div class="p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+					<h1 class="text-3xl font-bold text-red-600 dark:text-red-400">🚧 Página en mantenimiento 🚧</h1>
+					<p class="text-lg text-gray-700 dark:text-gray-300 mt-4">
+						Este sitio web está temporalmente deshabilitado por falta de pago.
+					</p>
+					<p class="text-gray-600 dark:text-gray-400 mt-2">
+						Para más información, contáctanos en: 
+						<a href="tel:+51988774507" class="text-blue-500 hover:underline">
+							+51 988 774 507
+						</a>
+					</p>
+				</div>
+			</div>
+		) : (
+			<!-- 🌐 Sitio normal -->
+			<>
+				<Navbar />
+				<slot />
+				<Footer />
+			</>
+		)}
 		<style is:global>
 			/* Optimización de rendimiento */
 			img {
