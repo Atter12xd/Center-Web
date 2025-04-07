@@ -1,6 +1,6 @@
 local_backend: true
 
-logo_url: /logo.svg
+logo_url: /logo.png
 
 backend:
     name: "github"

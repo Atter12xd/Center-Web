@@ -1,24 +1,55 @@
 ---
-export async function getStaticPaths() {
-  return [];
-}
-
+import { getCollection } from "astro:content";
+import Pagination from "@components/blog/pagination.astro";
+import Posts from "@components/blog/posts.astro";
+import Container from "@components/container.astro";
+import Sectionhead from "@components/sectionhead.astro";
 import Layout from "@layouts/Layout.astro";
+import i18next, { changeLanguage } from "i18next";
 
-const mensajeMantenimiento = "Nuestro sitio web está temporalmente fuera de servicio por falta de pago. Disculpe las molestias y gracias por su paciencia.";
-const numeroContacto = "+51 988 774 507";
+changeLanguage("es");
+
+export async function getStaticPaths({ paginate }) {
+	changeLanguage("en");
+	var posts = await getCollection("blog", ({ data }) => {
+		return !data.draft;
+	});
+	// Preprocess the posts to split the slugs and get the languages
+	var processedPosts = posts.map((post) => {
+		const [...slug] = post.slug.split("/");
+		let lang = i18next.language;
+		var firstSlug = post.slug.match(/^([^\/]*)\//);
+		if (firstSlug) {
+			lang = firstSlug[1];
+		}
+		return {
+			...post,
+			slug: slug.join("/"),
+			lang: lang,
+		};
+	});
+	// Filter posts based on the current language
+	const localizedPosts = processedPosts.filter(
+		(post) => post.lang === i18next.language,
+	);
+	localizedPosts.sort(
+		(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
+	);
+	return paginate(localizedPosts, {
+		params: { blog: "blog" || undefined },
+		pageSize: 4,
+	});
+}
+const { page } = Astro.props;
 ---
 
-<Layout title="Mantenimiento">
-  <section class="flex items-center h-screen p-16 bg-gray-100 dark:bg-gray-900">
-    <div class="container flex flex-col items-center justify-center px-5 mx-auto my-8 text-center">
-      <h1 class="text-5xl font-bold text-gray-800 dark:text-white">🚧 Sitio en Mantenimiento 🚧</h1>
-      <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">{mensajeMantenimiento}</p>
-      <p class="mt-2 text-gray-500">
-        Para más información, contáctenos al 
-        <a href={`tel:${numeroContacto}`} class="text-blue-500 underline">{numeroContacto}</a>
-      </p>
-      <img src="/maintenance.svg" alt="Modo de mantenimiento" class="w-64 mt-6" />
-    </div>
-  </section>
+<Layout title="Blog">
+	<Container>
+		<Sectionhead>
+			<Fragment slot="title">Noticias y Tendencias en Logística y Transporte</Fragment>
+			<Fragment slot="desc"> Mantente al día con las últimas novedades, opiniones de expertos y actualizaciones de nuestra empresa en el mundo del transporte y la logística.</Fragment>
+		</Sectionhead>
+		<Posts posts={page.data} />
+		<Pagination class="mt-20" prevUrl={page.url.prev} nextUrl={page.url.next} />
+	</Container>
 </Layout>
