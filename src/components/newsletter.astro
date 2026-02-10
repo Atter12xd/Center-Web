@@ -1,19 +1,16 @@
 ---
 import Button from "@components/ui/button.astro";
 import Link from "@components/ui/link.astro";
-import { t } from "i18next";
 ---
 
 <div class="mx-auto grid max-w-5xl mt-12 md:mt-20 grid-cols-1 gap-10 px-6 lg:grid-cols-12 lg:gap-8 lg:px-8">
 	<div class="max-w-xl font-bold tracking-tight text-gray-900 dark:text-gray-200 lg:col-span-7">
-		<h2 class="sm:block lg:inline xl:block text-3xl sm:text-4xl">{t("newsletter.title")}</h2>
-		<p class="sm:block lg:inline xl:block">{t("newsletter.subtitle")}</p>
+		<h2 class="sm:block lg:inline xl:block text-3xl sm:text-4xl">Únete a nuestro boletín informativo</h2>
+		<p class="sm:block lg:inline xl:block mt-2 text-gray-600 dark:text-gray-300 font-normal">Mantente al día con las últimas noticias y oportunidades comerciales del sector.</p>
 	</div>
 	<form class="w-full max-w-md lg:col-span-5 lg:pt-2" action="#" method="POST">
 		<div class="flex gap-x-4">
-			<label for="email-address" class="text-sm font-medium text-gray-900 dark:text-gray-200">
-				{t("newsletter.input_placeholder")}
-			</label>
+			<label for="email-address" class="sr-only">Correo electrónico</label>
 			<input
 				id="email-address"
 				name="email"
@@ -21,13 +18,13 @@ import { t } from "i18next";
 				autocomplete="email"
 				required
 				class="min-w-0 flex-auto rounded-md border-0 px-3.5 py-2 text-gray-900 dark:text-gray-100 dark:bg-stone-950 shadow-sm ring-1 ring-inset ring-gray-300 dark:placeholder:text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-				placeholder={t("newsletter.input_placeholder")}
+				placeholder="Escribe tu correo electrónico"
 			/>
-			<Button type="submit">{t("newsletter.button_text")}</Button>
+			<Button type="submit">Unirme</Button>
 		</div>
 		<p class="mt-4 text-sm leading-6 text-gray-900 dark:text-gray-200">
-			{t("newsletter.privacy")}
-			<Link href="#" style="muted" size="xs">{t("newsletter.privacy_link")}</Link>
+			Valoramos tu privacidad y protegemos tus datos. Consulta nuestra{" "}
+			<Link href="#" style="muted" size="xs">Política de Privacidad</Link>.
 		</p>
 	</form>
 </div>

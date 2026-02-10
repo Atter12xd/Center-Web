@@ -4,7 +4,6 @@ import Button from "@components/ui/button.astro";
 import Link from "@components/ui/link.astro";
 import { localizePath } from "astro-i18next";
 import { Icon } from "astro-icon/components";
-import { t } from "i18next";
 
 // Definición de los elementos del menú
 export const menuitems = [
@@ -73,7 +72,7 @@ export const menuitems = [
 					item.children && item.children.length ? (
 						<div x-on:click.away="open = false" class="relative" x-data="{ open: false }">
 							<Button x-on:click="open = !open" style="link" size="sm" class="mt-[2px]">
-								{t(item.title)}
+								{item.title}
 								<svg
 									fill="currentColor"
 									viewBox="0 0 20 20"
@@ -140,7 +139,7 @@ export const menuitems = [
 							}`}
 							x-bind:class="{ 'bg-gray-200 dark:bg-gray-600': isActive }"
 							data-path={item.path}>
-							{t(item.title)}
+							{item.title}
 						</Link>
 					),
 				)
@@ -148,10 +147,10 @@ export const menuitems = [
 		</div>
 		<div class="mt-4 md:mt-0 flex flex-col md:flex-row gap-4">
 			<Link href="/login" style="outline" class="md:px-3 md:py-2 leading-6">
-				{t("header.secondary_button_text")}
+				Iniciar sesión
 			</Link>
 			<Link href="https://wa.me/51965822970?text=Hola%2C%20me%20interesa%20Center%20Trading%20Corporation%20y%20deseo%20una%20cotizaci%C3%B3n" target="_blank">
-				{t("header.primary_button_text")}
+				Solicitar cotización
 			</Link>
 		</div>
 	</nav>

@@ -9,9 +9,9 @@ import { Icon } from "astro-icon/components";
 	<label for="theme-selector" class="sr-only">Choose a theme</label>
 	<select
 		x-data="{
-				theme: localStorage.theme || 'auto',
+				theme: localStorage.theme || 'light',
 				applyTheme: function() {
-					var theme = localStorage.theme || 'auto';
+					var theme = localStorage.theme || 'light';
 					var dark = false;
 					if (theme === 'dark') dark = true;
 					else if (theme === 'light') dark = false;
@@ -33,9 +33,9 @@ import { Icon } from "astro-icon/components";
 		x-model="theme"
 		aria-label="Choose a theme"
 		@change="switchTheme($event.target.value)">
-		<option value="auto">Automático (día/noche)</option>
-		<option value="system">Según sistema</option>
 		<option value="light">Día (claro)</option>
 		<option value="dark">Noche (oscuro)</option>
+		<option value="auto">Automático (según hora)</option>
+		<option value="system">Según sistema</option>
 	</select>
 </div>

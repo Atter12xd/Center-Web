@@ -1,62 +1,60 @@
 ---
 import Link from "@components/ui/link.astro";
-import { localizePath } from "astro-i18next";
 // @ts-ignore
 import { Icon } from "astro-icon/components";
-import { t } from "i18next";
 
 const features = [
 	{
 		title: "Acceso a mercados globales",
-		description: "features.global_trade",
+		description: "Facilitamos el acceso a mercados globales con estrategias comerciales efectivas y personalizadas para expandir tu negocio.",
 		icon: "bx:bxs-briefcase",
 		url: "#",
 	},
 	{
 		title: "Gestión de cadena de suministro",
-		description: "features.supply_chain",
+		description: "Gestión eficiente de la cadena de suministro para optimizar costos y tiempos de entrega en cada operación.",
 		icon: "bx:bxs-window-alt",
 		url: "#",
 	},
 	{
 		title: "Logística internacional",
-		description: "features.international_logistics",
+		description: "Soluciones de logística internacional para el transporte seguro de mercancías a cualquier destino.",
 		icon: "bx:bxs-data",
 		url: "#",
 	},
 	{
 		title: "Asesoría en normativas",
-		description: "features.regulatory_consulting",
+		description: "Asesoramiento experto en normativas y regulaciones internacionales para un comercio conforme.",
 		icon: "bx:bxs-bot",
 		url: "#",
 	},
 	{
 		title: "Atención personalizada",
-		description: "features.personalized_support",
+		description: "Atención personalizada y soporte dedicado en cada etapa del proceso comercial.",
 		icon: "bx:bxs-file-find",
 		url: "#",
 	},
 	{
 		title: "Conexión con proveedores",
-		description: "features.business_connections",
+		description: "Conectamos empresas con proveedores y clientes confiables en todo el mundo.",
 		icon: "bx:bxs-user",
 		url: "#",
 	},
 	{
 		title: "Optimización de procesos",
-		description: "features.process_optimization",
+		description: "Optimización de procesos comerciales con herramientas tecnológicas avanzadas.",
 		icon: "bx:bxs-user",
 		url: "#",
 	},
 	{
 		title: "Noticias y actualizaciones",
-		description: "features.industry_news",
+		description: "Accede a noticias y actualizaciones del sector en nuestro blog especializado.",
 		icon: "bx:bxs-user",
 		url: "/blog",
 	},
 	{
 		title: "Automatización de procesos",
-		description: "features.process_automation",
+		description: "Automatización de procesos para mejorar la eficiencia operativa de tu empresa.",
 		icon: "bx:bxs-user",
 		url: "#",
 	},
@@ -65,10 +63,10 @@ const features = [
 
 <div class="relative mx-auto max-w-5xl px-6 lg:px-8">
 	<div class="mx-auto max-w-2xl lg:text-center">
-		<h2 class="text-base font-semibold leading-7 text-black dark:text-white">{t("features.title")}</h2>
-		<p class="mt-2 text-3xl font-bold tracking-tight text-black dark:text-white sm:text-4xl">{t("features.subtitle")}</p>
-		<p class="mt-6 text-lg leading-8 text-gray-900 dark:text-gray-100">
-			{t("features.description")}
+		<p class="text-base font-semibold leading-7 text-indigo-600 dark:text-indigo-400">Nuestros Servicios</p>
+		<h2 class="mt-2 text-3xl font-bold tracking-tight text-black dark:text-white sm:text-4xl">Soluciones adaptadas a tu negocio</h2>
+		<p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+			Ofrecemos soluciones integrales para el comercio internacional, asegurando eficiencia, seguridad y cumplimiento normativo en cada operación.
 		</p>
 	</div>
 	<div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
@@ -82,14 +80,12 @@ const features = [
 							</div>
 							{item.title}
 						</dt>
-						<dd class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-900 dark:text-gray-100">
-							<p class="flex-auto">{t(item.description)}</p>
+						<dd class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-300">
+							<p class="flex-auto">{item.description}</p>
 							<p class="mt-6">
-								<Link href={item.url} style="muted" size="xs" class="leading-6 text-left text-black dark:text-white">
-									{t("features.learn_more")}{" "}
-									<span class="pl-1 text-black dark:text-white" aria-hidden="true">
-										→
-									</span>
+								<Link href={item.url} style="muted" size="xs" class="leading-6 text-left text-indigo-600 dark:text-indigo-400 font-semibold">
+									Saber más{" "}
+									<span class="pl-1" aria-hidden="true">→</span>
 								</Link>
 							</p>
 						</dd>

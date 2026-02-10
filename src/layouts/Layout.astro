@@ -68,12 +68,12 @@ const makeTitle = title
 					return h >= 6 && h < 19;
 				}
 				function applyTheme() {
-					var theme = localStorage.theme || "auto";
+					var theme = localStorage.theme || "light";
 					var dark = false;
 					if (theme === "dark") dark = true;
 					else if (theme === "light") dark = false;
+					else if (theme === "auto") dark = !isDaytime();
 					else if (theme === "system") dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-					else dark = !isDaytime();
 					document.documentElement.classList.toggle("dark", dark);
 				}
 				applyTheme();
@@ -84,7 +84,7 @@ const makeTitle = title
 		{pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} />}
 		<script src="/src/pwa.ts"></script>
 	</head>
-	<body class="dark:bg-gray-900 bg-white">
+	<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
 		<Navbar />
 		<slot />
 		<Footer />
