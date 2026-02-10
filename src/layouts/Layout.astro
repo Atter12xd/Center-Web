@@ -62,16 +62,23 @@ const makeTitle = title
 		/>
 
 		<script is:inline>
-			function handleThemeChange() {
-				if (localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-					document.documentElement.classList.add("dark");
-				} else {
-					document.documentElement.classList.remove("dark");
+			(function() {
+				function isDaytime() {
+					var h = new Date().getHours();
+					return h >= 6 && h < 19;
 				}
-			}
-			handleThemeChange();
-			document.removeEventListener("astro:after-swap", handleThemeChange);
-			document.addEventListener("astro:after-swap", handleThemeChange);
+				function applyTheme() {
+					var theme = localStorage.theme || "auto";
+					var dark = false;
+					if (theme === "dark") dark = true;
+					else if (theme === "light") dark = false;
+					else if (theme === "system") dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+					else dark = !isDaytime();
+					document.documentElement.classList.toggle("dark", dark);
+				}
+				applyTheme();
+				document.addEventListener("astro:after-swap", applyTheme);
+			})();
 		</script>
 
 		{pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} />}

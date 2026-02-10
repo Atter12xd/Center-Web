@@ -25,4 +25,8 @@ export default {
       es: { translation: loadTranslations("es") },
     },
   },
+  // Deshabilitar backend async - usar solo resources precargados para que t() funcione de inmediato
+  i18nextServerPlugins: {
+    fsBackend: null,
+  },
 };

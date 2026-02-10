@@ -9,23 +9,22 @@ import { Icon } from "astro-icon/components";
 	<label for="theme-selector" class="sr-only">Choose a theme</label>
 	<select
 		x-data="{
-				theme: localStorage.theme || 'system',
-				updateDocumentClassTheme: function() {
-					if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-						document.documentElement.classList.add('dark');
-					} else {
-						document.documentElement.classList.remove('dark');
+				theme: localStorage.theme || 'auto',
+				applyTheme: function() {
+					var theme = localStorage.theme || 'auto';
+					var dark = false;
+					if (theme === 'dark') dark = true;
+					else if (theme === 'light') dark = false;
+					else if (theme === 'system') dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+					else {
+						var h = new Date().getHours();
+						dark = h < 6 || h >= 19;
 					}
+					document.documentElement.classList.toggle('dark', dark);
 				},
 				switchTheme: function (newValue) {
-					if (newValue == 'dark') {
-						localStorage.theme = 'dark';
-					} else if (newValue == 'light') {
-						localStorage.theme = 'light';
-					} else {
-						localStorage.removeItem('theme');
-					}
-					this.updateDocumentClassTheme();
+					localStorage.theme = newValue;
+					this.applyTheme();
 				},
 			}"
 		name="theme-selector"
@@ -34,8 +33,9 @@ import { Icon } from "astro-icon/components";
 		x-model="theme"
 		aria-label="Choose a theme"
 		@change="switchTheme($event.target.value)">
-		<option value="system">Dia</option>
-		<option value="dark">Noche</option>
-		<option value="light">Dia</option>
+		<option value="auto">Automático (día/noche)</option>
+		<option value="system">Según sistema</option>
+		<option value="light">Día (claro)</option>
+		<option value="dark">Noche (oscuro)</option>
 	</select>
 </div>
