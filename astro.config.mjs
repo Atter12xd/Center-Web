@@ -74,7 +74,5 @@ export default defineConfig({
 			[rehypeAutolinkHeadings, autolinkConfig],
 		],
 	},
-	experimental: {
-		contentCollectionCache: true,
-	},
+	// contentCollectionCache deshabilitado - causa errores en Vercel (Cannot find module dist/content/...)
 });
